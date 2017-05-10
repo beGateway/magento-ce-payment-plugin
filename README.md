@@ -69,7 +69,7 @@ If you setup the module with default values, you can use the test data to make a
 
 ## Установка (ручная)
 
-  * [Скачайте архив модуля](https://github.com/beGateway/magento2-payment-module/archive/master.zip), распакуйте его и скопируйте его содержимое в новую директорию ```<root>/``` вашей Magento инсталляции
+  * [Скачайте архив модуля](https://github.com/beGateway/magento-ce-payment-plugin/raw/master/magento-ce-payment-plugin.zip), распакуйте его и скопируйте его содержимое в новую директорию ```<root>/``` вашей Magento инсталляции
 
 ## Настройка
 
