@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!--
+Copyright (C) 2017 beGateway
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+@author      eComCharge
+@copyright   2017 beGateway
+@license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
+-->
+<config>
+    <modules>
+       <beGateway>
+         <version>1.2.9</version>
+       </beGateway>
+    </modules>
+
+    <global>
+        <blocks>
+            <begateway>
+                <class>beGateway_Block</class>
+            </begateway>
+        </blocks>
+
+        <models>
+            <begateway>
+                <class>beGateway_Model</class>
+            </begateway>
+        </models>
+
+        <helpers>
+            <begateway>
+                <class>beGateway_Helper</class>
+            </begateway>
+        </helpers>
+
+        <payment>
+            <groups>
+                <begateway>beGateway</begateway>
+            </groups>
+        </payment>
+
+        <events>
+            <checkout_submit_all_after>
+                <observers>
+                    <beGateway>
+                        <class>beGateway_Observer_CheckoutSubmitAllAfter</class>
+                        <method>handleAction</method>
+                    </beGateway>
+                </observers>
+            </checkout_submit_all_after>
+            <sales_quote_address_collect_totals_before>
+                <observers>
+                    <beGateway>
+                        <class>beGateway_Observer_SalesQuoteAddressCollectTotalsBefore</class>
+                        <method>handleAction</method>
+                    </beGateway>
+                </observers>
+            </sales_quote_address_collect_totals_before>
+        </events>
+
+    </global>
+
+    <frontend>
+        <routers>
+            <begateway>
+                <use>standard</use>
+                <args>
+                    <module>beGateway</module>
+                    <frontName>begateway</frontName>
+                </args>
+            </begateway>
+        </routers>
+        <secure_url>
+            <begateway>/begateway/</begateway>
+        </secure_url>
+        <translate>
+            <modules>
+                <beGateway>
+                    <files>
+                        <default>beGateway.csv</default>
+                    </files>
+                </beGateway>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <beGateway>
+                    <files>
+                        <default>beGateway.csv</default>
+                    </files>
+                </beGateway>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <payment>
+            <begateway_direct>
+                <model>begateway/direct</model>
+                <order_status>pending</order_status>
+                <title>Credit Card (beGateway Direct)</title>
+                <cctypes>VI,MC</cctypes>
+                <payment_action>payment</payment_action>
+                <group>begateway</group>
+            </begateway_direct>
+            <begateway_checkout>
+                <model>begateway/checkout</model>
+                <title>Credit Card (beGateway Checkout)</title>
+                <payment_action>payment</payment_action>
+                <order_status>pending</order_status>
+                <group>begateway</group>
+            </begateway_checkout>
+        </payment>
+    </default>
+</config>

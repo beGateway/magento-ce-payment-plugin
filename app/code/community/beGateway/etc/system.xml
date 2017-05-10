@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<!--
+Copyright (C) 2017 beGateway
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+@author      eComCharge
+@copyright   2017 beGateway
+@license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
+-->
+<config>
+  <sections>
+    <payment>
+      <groups>
+        <begateway_checkout translate="label, comment" module="begateway">
+          <label>beGateway Checkout</label>
+          <comment>Checkout payment method - receive credit-card payments, without the need of PCI-DSS certificate or HTTPS. Note: Upon checkout, the customer will be redirected to a secure payment form, located on our servers and we will notify you, once the payment reached a final status</comment>
+          <sort_order>601</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status</source_model>
+              <sort_order>4</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <can_be_empty>0</can_be_empty>
+            </order_status>
+            <shop_id translate="label">
+              <label>Shop ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>6</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry validate-alphanum</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </shop_id>
+            <shop_pass translate="label">
+              <label>Shop Secret Key</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>7</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </shop_pass>
+            <domain_gateway translate="label comment">
+              <label>Gateway Domain</label>
+              <frontend_type>text</frontend_type>
+              <comment>Payment gateway domain e.g. gateway.example.com of your payment provider</comment>
+              <sort_order>8</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </domain_gateway>
+            <domain_checkout translate="label comment">
+              <label>Checkout Domain</label>
+              <frontend_type>text</frontend_type>
+              <comment>Checkout domain e.g. checkout.example.com of your payment provider</comment>
+              <sort_order>9</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </domain_checkout>
+            <payment_action translate="label, comment">
+              <label>Payment Action</label>
+              <comment>Select the transaction type for the transaction</comment>
+              <frontend_type>select</frontend_type>
+              <source_model>begateway/admin_direct_options_transaction_type</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </payment_action>
+            <credit_card translate="label">
+              <label>Enable Credit Card payments</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>16</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </credit_card>
+            <credit_card_halva translate="label">
+              <label>Enable Halva payments</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>17</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </credit_card_halva>
+            <erip translate="label">
+              <label>Enable ERIP payments</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>18</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </erip>
+            <erip_service_no translate="label">
+              <label>ERIP service number</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>19</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <depends>
+                <active>1</active>
+                <erip>
+                    <value>1</value>
+                </erip>
+              </depends>
+            </erip_service_no>
+            <allowspecific translate="label">
+                <label>Payment from Applicable Countries</label>
+                <frontend_type>allowspecific</frontend_type>
+                <sort_order>14</sort_order>
+                <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>required-entry</validate>
+                <can_be_empty>0</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </allowspecific>
+            <specificcountry translate="label">
+                <label>Payment from Specific Countries</label>
+                <frontend_type>multiselect</frontend_type>
+                <sort_order>15</sort_order>
+                <source_model>adminhtml/system_config_source_country</source_model>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>required-entry</validate>
+                <can_be_empty>0</can_be_empty>
+                <depends>
+                    <active>1</active>
+                    <allowspecific>1</allowspecific>
+                </depends>
+            </specificcountry>
+            <min_order_total translate="label">
+                <label>Minimum Order Total</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>36</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>validate-zero-or-greater</validate>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </min_order_total>
+            <max_order_total translate="label">
+                <label>Maximum Order Total</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>37</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>validate-zero-or-greater</validate>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </max_order_total>
+            <sort_order translate="label">
+                <label>Sort Order</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>48</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <frontend_class>validate-number</frontend_class>
+                <validate>validate-zero-or-greater</validate>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </sort_order>
+          </fields>
+        </begateway_checkout>
+        <begateway_direct translate="label, comment" module="begateway">
+          <label>beGateway Direct</label>
+          <comment>Direct API - allow customers to enter their CreditCard information on your website. Note: You need PCI-DSS certificate in order to enable this payment method.</comment>
+          <sort_order>602</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+            </title>
+            <order_status translate="label">
+              <label>New order status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status</source_model>
+              <sort_order>4</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <can_be_empty>0</can_be_empty>
+            </order_status>
+            <shop_id translate="label">
+              <label>Shop ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>6</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry validate-alphanum</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </shop_id>
+            <shop_pass translate="label">
+              <label>Shop Secret Key</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>7</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </shop_pass>
+            <domain_gateway translate="label comment">
+              <label>Gateway Domain</label>
+              <frontend_type>text</frontend_type>
+              <comment>Payment gateway domain e.g. gateway.example.com of your payment provider</comment>
+              <sort_order>8</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>required-entry</validate>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </domain_gateway>
+            <payment_action translate="label, comment">
+              <label>Payment Action</label>
+              <comment>Select the transaction type for the transaction</comment>
+              <frontend_type>select</frontend_type>
+              <source_model>begateway/admin_direct_options_transaction_type</source_model>
+              <sort_order>15</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <can_be_empty>0</can_be_empty>
+              <depends>
+                  <active>1</active>
+              </depends>
+            </payment_action>
+            <allowspecific translate="label">
+                <label>Payment from Applicable Countries</label>
+                <frontend_type>allowspecific</frontend_type>
+                <sort_order>14</sort_order>
+                <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>required-entry</validate>
+                <can_be_empty>0</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </allowspecific>
+            <specificcountry translate="label">
+                <label>Payment from Specific Countries</label>
+                <frontend_type>multiselect</frontend_type>
+                <sort_order>15</sort_order>
+                <source_model>adminhtml/system_config_source_country</source_model>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>required-entry</validate>
+                <can_be_empty>0</can_be_empty>
+                <depends>
+                    <active>1</active>
+                    <allowspecific>1</allowspecific>
+                </depends>
+            </specificcountry>
+            <cctypes translate="label">
+                <label>Credit Card Types</label>
+                <frontend_type>multiselect</frontend_type>
+                <source_model>adminhtml/system_config_source_payment_cctype</source_model>
+                <sort_order>17</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>required-entry</validate>
+                <can_be_empty>0</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </cctypes>
+            <min_order_total translate="label">
+                <label>Minimum Order Total</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>36</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>validate-zero-or-greater</validate>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </min_order_total>
+            <max_order_total translate="label">
+                <label>Maximum Order Total</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>37</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <validate>validate-zero-or-greater</validate>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </max_order_total>
+            <sort_order translate="label">
+                <label>Sort Order</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>48</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>0</show_in_store>
+                <frontend_class>validate-number</frontend_class>
+                <validate>validate-zero-or-greater</validate>
+                <can_be_empty>1</can_be_empty>
+                <depends>
+                    <active>1</active>
+                </depends>
+            </sort_order>
+          </fields>
+        </begateway_direct>
+      </groups>
+    </payment>
+  </sections>
+</config>
