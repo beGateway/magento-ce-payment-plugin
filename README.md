@@ -7,14 +7,14 @@ This is a Payment Module for Magento Community Edition, that gives you the abili
 ## Requirements
 
   * Magento Community Edition 1.8+
-  * [BeGateway PHP API library v2.7.x](https://github.com/beGateway/begateway-api-php) - (Integrated in Module)
+  * [BeGateway PHP API library v2.7.x](https://github.com/begateway/begateway-api-php) - (Integrated in Module)
   * PCI DSS certified server in order to use ```BeGateway Direct```
 
 *Note:* this module has been tested only with Magento __Community Edition__, it may not work as intended with Magento __Enterprise Edition__
 
 ## Installation (manual)
 
-  * [Download the Payment Module archive](https://github.com/beGateway/magento-ce-payment-plugin/archive/master.zip), unpack it and upload its contents to a new folder ```<root>/``` of your Magento installation
+  * [Download the Payment Module archive](https://github.com/begateway/magento-ce-payment-plugin/archive/master.zip), unpack it and upload its contents to a new folder ```<root>/``` of your Magento installation
 
 
 ## Configuration
@@ -62,14 +62,14 @@ If you setup the module with default values, you can use the test data to make a
 ## Требования
 
   * Magento Community Edition 1.8+
-  * [BeGateway PHP API библиотека v2.7.x](https://github.com/beGateway/begateway-api-php) - (поставляется с модулем)
+  * [BeGateway PHP API библиотека v2.7.x](https://github.com/begateway/begateway-api-php) - (поставляется с модулем)
   * PCI DSS сертифицированный сервер, чтобы принимать платежи через ```BeGateway Direct```
 
 *Примечание:* этот модуль тестировался только с Magento __Community Edition__ и может работать не стабильно с Magento __Enterprise Edition__
 
 ## Установка (ручная)
 
-  * [Скачайте архив модуля](https://github.com/beGateway/magento-ce-payment-plugin/raw/master/magento-ce-payment-plugin.zip), распакуйте его и скопируйте его содержимое в новую директорию ```<root>/``` вашей Magento инсталляции
+  * [Скачайте архив модуля](https://github.com/begateway/magento-ce-payment-plugin/raw/master/magento-ce-payment-plugin.zip), распакуйте его и скопируйте его содержимое в новую директорию ```<root>/``` вашей Magento инсталляции
 
 ## Настройка
 
