@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2017 beGateway
+ * Copyright (C) 2017 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,11 +13,11 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2017 beGateway
+ * @copyright   2017 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
-class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
+class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
 {
     protected $_code = 'begateway_checkout';
 
@@ -65,7 +65,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             if (!$billing)
               Mage::throwException($helper->__('Error to load the order data'));
 
-            $token = new \beGateway\GetPaymentToken;
+            $token = new \BeGateway\GetPaymentToken;
 
             $tracking_id = $helper->genTransactionId($order->getIncrementId());
 
@@ -104,17 +104,17 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             }
 
             if ($helper->getConfigData($this->getCode(), $helper::CREDIT_CARD)) {
-              $cc = new \beGateway\PaymentMethod\CreditCard;
+              $cc = new \BeGateway\PaymentMethod\CreditCard;
               $token->addPaymentMethod($cc);
             }
 
             if ($helper->getConfigData($this->getCode(), $helper::CREDIT_CARD_HALVA)) {
-              $halva = new \beGateway\PaymentMethod\CreditCardHalva;
+              $halva = new \BeGateway\PaymentMethod\CreditCardHalva;
               $token->addPaymentMethod($halva);
             }
 
             if ($helper->getConfigData($this->getCode(), $helper::ERIP)) {
-              $erip = new \beGateway\PaymentMethod\Erip(array(
+              $erip = new \BeGateway\PaymentMethod\Erip(array(
                 'order_id' => $order_id,
                 'account_number' => strval($order_id),
                 'service_no' => $helper->getConfigData($this->getCode(), 'erip_service_no'),
@@ -126,7 +126,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             $response = $token->submit();
 
             if (!$response->isSuccess()) {
-              Mage::log("beGateway API response: " . $response->getMessage());
+              Mage::log("BeGateway API response: " . $response->getMessage());
               Mage::throwException($helper->__('Error to get a payment token. Contact the store administrator.'));
             }
 
@@ -185,7 +185,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
 
             $referenceId = $authorize->getTxnId();
 
-            $capture = new \beGateway\Capture;
+            $capture = new \BeGateway\Capture;
             $capture->setParentUid($referenceId);
             $capture->money->setAmount($amount);
             $capture->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
@@ -247,7 +247,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      * @param float $amount
      *
-     * @return beGateway_Model_Checkout
+     * @return BeGateway_Model_Checkout
      */
     public function refund(Varien_Object $payment, $amount)
     {
@@ -273,7 +273,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
 
             $referenceId = $capture->getTxnId();
 
-            $refund = new \beGateway\Refund;
+            $refund = new \BeGateway\Refund;
             $refund->setParentUid($referenceId);
             $refund->money->setAmount($amount);
             $refund->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
@@ -336,7 +336,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
      *
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      *
-     * @return beGateway_Model_Checkout
+     * @return BeGateway_Model_Checkout
      */
     public function void(Varien_Object $payment)
     {
@@ -354,7 +354,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
 
             $referenceId = $transactions ? reset($transactions)->getTxnId() : null;
 
-            $void = new \beGateway\Void;
+            $void = new \BeGateway\Void;
             $void->setParentUid($referenceId);
             $void->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
             $void->money->setAmount($payment->getOrder()->getBaseGrandTotal());
@@ -415,7 +415,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
      *
      * @param Varien_Object $payment
      *
-     * @return beGateway_Model_Checkout
+     * @return BeGateway_Model_Checkout
      */
     public function cancel(Varien_Object $payment)
     {
@@ -500,7 +500,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
                 $payment->setIsTransactionClosed(true);
             }
 
-            $money = new \beGateway\Money;
+            $money = new \BeGateway\Money;
             $money->setCents($webhook->getResponse()->transaction->amount);
             $money->setCurrency($webhook->getResponse()->transaction->currency);
 
@@ -540,7 +540,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
     /**
      * Get URL to "Redirect" block
      *
-     * @see beGateway_CheckoutController
+     * @see BeGateway_CheckoutController
      *
      * @note In order for redirect to work, you must
      * set the session variable:
@@ -559,7 +559,7 @@ class beGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
      *
      * @param $helper string - Name of the helper, empty for the default class helper
      *
-     * @return beGateway_Helper_Data|mixed
+     * @return BeGateway_Helper_Data|mixed
      */
     protected function getHelper($helper = '')
     {

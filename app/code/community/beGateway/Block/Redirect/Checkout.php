@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2017 beGateway
+ * Copyright (C) 2017 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,20 +13,20 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2017 beGateway
+ * @copyright   2017 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
 /**
- * Class beGateway_Block_Redirect_Checkout
+ * Class BeGateway_Block_Redirect_Checkout
  *
  * Redirect Block for Checkout method
  */
-class beGateway_Block_Redirect_Checkout extends Mage_Core_Block_Template
+class BeGateway_Block_Redirect_Checkout extends Mage_Core_Block_Template
 {
     /** @var String */
     protected $_uniqueId;
-    /** @var beGateway_Helper_Data $helper */
+    /** @var BeGateway_Helper_Data $helper */
     protected $_helper;
 
     protected function _construct()

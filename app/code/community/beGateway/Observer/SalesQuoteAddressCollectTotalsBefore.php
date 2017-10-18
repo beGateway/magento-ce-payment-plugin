@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2017 beGateway
+ * Copyright (C) 2017 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,14 +13,14 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2017 beGateway
+ * @copyright   2017 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
 /**
- * Class beGateway_Observer_SalesQuoteAddressCollectTotalsBefore
+ * Class BeGateway_Observer_SalesQuoteAddressCollectTotalsBefore
  */
-class beGateway_Observer_SalesQuoteAddressCollectTotalsBefore
+class BeGateway_Observer_SalesQuoteAddressCollectTotalsBefore
 {
     protected $_methodCodes = array(
         'begateway_checkout',
@@ -30,7 +30,7 @@ class beGateway_Observer_SalesQuoteAddressCollectTotalsBefore
     /**
      * Observer Event Handler
      * @param Varien_Event_Observer $observer
-     * @return bool|beGateway_Observer_SalesQuoteAddressCollectTotalsBefore
+     * @return bool|BeGateway_Observer_SalesQuoteAddressCollectTotalsBefore
      */
     public function handleAction($observer)
     {
@@ -64,7 +64,7 @@ class beGateway_Observer_SalesQuoteAddressCollectTotalsBefore
     }
 
     /**
-     * @return beGateway_Helper_Data
+     * @return BeGateway_Helper_Data
      */
     protected function getHelper()
     {

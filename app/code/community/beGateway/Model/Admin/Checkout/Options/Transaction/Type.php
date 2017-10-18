@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2016 beGateway
+ * Copyright (C) 2016 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,16 +13,16 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2016 beGateway
+ * @copyright   2016 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
 /**
- * Class beGateway_Model_Admin_Direct_Options_Transaction_Type
+ * Class BeGateway_Model_Admin_Direct_Options_Transaction_Type
  *
  * Admin options Drop-down for Direct Transaction Types
  */
-class beGateway_Model_Admin_Checkout_Options_Transaction_Type
+class BeGateway_Model_Admin_Checkout_Options_Transaction_Type
 {
     /**
      * Pre-load the required files

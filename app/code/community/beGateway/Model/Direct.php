@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2017 beGateway
+ * Copyright (C) 2017 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,12 +13,12 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2017 beGateway
+ * @copyright   2017 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
 /**
- * beGateway Direct Payment Method
+ * BeGateway Direct Payment Method
  *
  * This class requires the user to input
  * their CC data and as such requires PCI
@@ -29,7 +29,7 @@
  *
  * @category
  */
-class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
+class BeGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
 {
     // Variables
     protected $_code = 'begateway_direct';
@@ -149,7 +149,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      * @param Varien_Object $payment
      * @param float $amount
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      */
     public function authorize(Varien_Object $payment, $amount)
     {
@@ -164,7 +164,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      * @param float $amount
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      */
     public function capture(Varien_Object $payment, $amount)
     {
@@ -187,7 +187,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      * @param float $amount
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      */
     protected function processTransaction(Varien_Object $payment, $amount)
     {
@@ -202,7 +202,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
             $billing = $order->getBillingAddress();
             $shipping = $order->getShippingAddress();
 
-            $transactionClass = '\beGateway\\'. ucfirst($transactionType);
+            $transactionClass = '\BeGateway\\'. ucfirst($transactionType);
             die($transactionClass);
             $begateway = new $transactionClass;
 
@@ -291,7 +291,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      * @param float $amount
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      *
      * @throws Mage_Core_Exception
      */
@@ -306,7 +306,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
 
             $referenceId = $authorize->getTxnId();
 
-            $capture = new \beGateway\Capture;
+            $capture = new \BeGateway\Capture;
             $capture->setParentUid($referenceId);
             $capture->money->setAmount($amount);
             $capture->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
@@ -368,7 +368,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      * @param float $amount
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      */
     public function refund(Varien_Object $payment, $amount)
     {
@@ -381,7 +381,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
 
             $referenceId = $capture->getTxnId();
 
-            $refund = new \beGateway\Refund;
+            $refund = new \BeGateway\Refund;
             $refund->setParentUid($referenceId);
             $refund->money->setAmount($amount);
             $refund->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
@@ -444,7 +444,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      *
      * @param Varien_Object|Mage_Sales_Model_Order_Payment $payment
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      */
     public function void(Varien_Object $payment)
     {
@@ -463,7 +463,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
 
             $referenceId = $transactions ? reset($transactions)->getTxnId() : null;
 
-            $void = new \beGateway\Void;
+            $void = new \BeGateway\Void;
             $void->setParentUid($referenceId);
             $void->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
             $void->money->setAmount($payment->getOrder()->getBaseGrandTotal());
@@ -524,7 +524,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      *
      * @param Varien_Object $payment
      *
-     * @return beGateway_Model_Direct
+     * @return BeGateway_Model_Direct
      */
     public function cancel(Varien_Object $payment)
     {
@@ -576,7 +576,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
                 $transaction->setIsClosed(!$isTransactionApproved);
 
                 $transaction->save();
-                $money = new \beGateway\Money;
+                $money = new \BeGateway\Money;
                 $money->setCents($webhook->getResponse()->transaction->amount);
                 $money->setCurrency($webhook->getResponse()->transaction->currency);
 
@@ -620,7 +620,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
     /**
      * Get URL to "Redirect" block
      *
-     * @see beGateway_DirectController
+     * @see BeGateway_DirectController
      *
      * @note In order for redirect to work, you must
      * set the session variable "BeGatewayDirectRedirectUrl"
@@ -637,7 +637,7 @@ class beGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
      *
      * @param $helper string - Name of the helper, empty for the default class helper
      *
-     * @return beGateway_Helper_Data|mixed
+     * @return BeGateway_Helper_Data|mixed
      */
     protected function getHelper($helper = '')
     {

@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2017 beGateway
+ * Copyright (C) 2017 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,21 +13,21 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2017 beGateway
+ * @copyright   2017 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
 /**
- * Class beGateway_CheckoutController
+ * Class BeGateway_CheckoutController
  *
  * Front-end controller for Checkout method
  */
-class beGateway_CheckoutController extends Mage_Core_Controller_Front_Action
+class BeGateway_CheckoutController extends Mage_Core_Controller_Front_Action
 {
-    /** @var beGateway_Helper_Data $helper */
+    /** @var BeGateway_Helper_Data $helper */
     protected $_helper;
 
-    /** @var beGateway_Model_Checkout $checkout */
+    /** @var BeGateway_Model_Checkout $checkout */
     protected $_checkout;
 
     protected function _construct()
@@ -57,7 +57,7 @@ class beGateway_CheckoutController extends Mage_Core_Controller_Front_Action
         try {
             $this->_helper->initClient($this->_checkout->getCode());
 
-            $notification = new \beGateway\Webhook;
+            $notification = new \BeGateway\Webhook;
 
             if ($notification->isAuthorized()) {
 

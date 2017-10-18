@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-Copyright (C) 2017 beGateway
+Copyright (C) 2017 BeGateway
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -13,56 +13,56 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 @author      eComCharge
-@copyright   2017 beGateway
+@copyright   2017 BeGateway
 @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
 -->
 <config>
     <modules>
-       <beGateway>
+       <BeGateway>
          <version>1.2.9</version>
-       </beGateway>
+       </BeGateway>
     </modules>
 
     <global>
         <blocks>
             <begateway>
-                <class>beGateway_Block</class>
+                <class>BeGateway_Block</class>
             </begateway>
         </blocks>
 
         <models>
             <begateway>
-                <class>beGateway_Model</class>
+                <class>BeGateway_Model</class>
             </begateway>
         </models>
 
         <helpers>
             <begateway>
-                <class>beGateway_Helper</class>
+                <class>BeGateway_Helper</class>
             </begateway>
         </helpers>
 
         <payment>
             <groups>
-                <begateway>beGateway</begateway>
+                <begateway>BeGateway</begateway>
             </groups>
         </payment>
 
         <events>
             <checkout_submit_all_after>
                 <observers>
-                    <beGateway>
-                        <class>beGateway_Observer_CheckoutSubmitAllAfter</class>
+                    <BeGateway>
+                        <class>BeGateway_Observer_CheckoutSubmitAllAfter</class>
                         <method>handleAction</method>
-                    </beGateway>
+                    </BeGateway>
                 </observers>
             </checkout_submit_all_after>
             <sales_quote_address_collect_totals_before>
                 <observers>
-                    <beGateway>
-                        <class>beGateway_Observer_SalesQuoteAddressCollectTotalsBefore</class>
+                    <BeGateway>
+                        <class>BeGateway_Observer_SalesQuoteAddressCollectTotalsBefore</class>
                         <method>handleAction</method>
-                    </beGateway>
+                    </BeGateway>
                 </observers>
             </sales_quote_address_collect_totals_before>
         </events>
@@ -74,7 +74,7 @@ GNU General Public License for more details.
             <begateway>
                 <use>standard</use>
                 <args>
-                    <module>beGateway</module>
+                    <module>BeGateway</module>
                     <frontName>begateway</frontName>
                 </args>
             </begateway>
@@ -84,11 +84,11 @@ GNU General Public License for more details.
         </secure_url>
         <translate>
             <modules>
-                <beGateway>
+                <BeGateway>
                     <files>
-                        <default>beGateway.csv</default>
+                        <default>BeGateway.csv</default>
                     </files>
-                </beGateway>
+                </BeGateway>
             </modules>
         </translate>
     </frontend>
@@ -96,11 +96,11 @@ GNU General Public License for more details.
     <adminhtml>
         <translate>
             <modules>
-                <beGateway>
+                <BeGateway>
                     <files>
-                        <default>beGateway.csv</default>
+                        <default>BeGateway.csv</default>
                     </files>
-                </beGateway>
+                </BeGateway>
             </modules>
         </translate>
     </adminhtml>
@@ -110,14 +110,14 @@ GNU General Public License for more details.
             <begateway_direct>
                 <model>begateway/direct</model>
                 <order_status>pending</order_status>
-                <title>Credit Card (beGateway Direct)</title>
+                <title>Credit Card (BeGateway Direct)</title>
                 <cctypes>VI,MC</cctypes>
                 <payment_action>payment</payment_action>
                 <group>begateway</group>
             </begateway_direct>
             <begateway_checkout>
                 <model>begateway/checkout</model>
-                <title>Credit Card (beGateway Checkout)</title>
+                <title>Credit Card (BeGateway Checkout)</title>
                 <payment_action>payment</payment_action>
                 <order_status>pending</order_status>
                 <group>begateway</group>

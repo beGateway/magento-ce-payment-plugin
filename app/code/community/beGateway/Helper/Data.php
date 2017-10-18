@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) 2017 beGateway
+ * Copyright (C) 2017 BeGateway
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -13,16 +13,16 @@
  * GNU General Public License for more details.
  *
  * @author      eComCharge
- * @copyright   2017 beGateway
+ * @copyright   2017 BeGateway
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU General Public License, version 2 (GPL-2.0)
  */
 
 /**
- * Class beGateway_Helper_Data
+ * Class BeGateway_Helper_Data
  *
- * Helper functions for beGateway
+ * Helper functions for BeGateway
  */
-class beGateway_Helper_Data extends Mage_Core_Helper_Abstract
+class BeGateway_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const RAW_DETAILS_TRANSACTION_TYPE = 'transaction_type';
     const RAW_DETAILS_TERMINAL_TOKEN = 'terminal_token';
@@ -53,15 +53,15 @@ class beGateway_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function initLibrary()
     {
-        if (!class_exists('\beGateway\Settings', false)) {
+        if (!class_exists('\BeGateway\Settings', false)) {
             // @codingStandardsIgnoreStart
-            include Mage::getBaseDir('lib') . DS . 'beGateway' . DS . 'lib' . DS . 'beGateway.php';
+            include Mage::getBaseDir('lib') . DS . 'BeGateway' . DS . 'lib' . DS . 'BeGateway.php';
             // @codingStandardsIgnoreEnd
         }
     }
 
     /**
-     * Check whether beGateway is initialized and init if not
+     * Check whether BeGateway is initialized and init if not
      *
      * @param string $model Name of the model, for which we query settings
      *
@@ -71,23 +71,23 @@ class beGateway_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $this->initLibrary();
 
-        \beGateway\Settings::$shopId = $this->getConfigData(
+        \BeGateway\Settings::$shopId = $this->getConfigData(
           $model,
           'shop_id'
         );
 
-        \beGateway\Settings::$shopKey = $this->getConfigData(
+        \BeGateway\Settings::$shopKey = $this->getConfigData(
           $model,
           'shop_pass'
         );
 
-        \beGateway\Settings::$gatewayBase =
+        \BeGateway\Settings::$gatewayBase =
           'https://' . $this->getConfigData(
             $model,
             'domain_gateway'
           );
 
-        \beGateway\Settings::$checkoutBase =
+        \BeGateway\Settings::$checkoutBase =
           'https://' . $this->getConfigData(
             $model,
             'domain_checkout'
@@ -295,7 +295,7 @@ class beGateway_Helper_Data extends Mage_Core_Helper_Abstract
         try {
           $arResponse = $response->getResponseArray();
 
-          $money = new \beGateway\Money;
+          $money = new \BeGateway\Money;
 
           if (isset($arResponse['transaction'])) {
 
