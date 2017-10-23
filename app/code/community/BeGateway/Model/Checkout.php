@@ -84,9 +84,6 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             $token->customer->setZip($billing->getPostcode());
             $token->customer->setPhone($billing->getTelephone());
             $token->customer->setEmail($order->getCustomerEmail());
-            $token->setAddressHidden();
-            if (strlen($token->customer->getEmail()) > 0)
-              $token->setEmailReadonly();
 
             $notification_url = $helper->getNotifyURL('checkout');
             $notification_url = str_replace('carts.local', 'webhook.begateway.com:8443', $notification_url);
@@ -358,7 +355,7 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             $void->setParentUid($referenceId);
             $void->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
             $void->money->setAmount($payment->getOrder()->getBaseGrandTotal());
-            
+
             $response = $void->submit();
 
             if ($response->getUid()) {

@@ -19,7 +19,7 @@ GNU General Public License for more details.
 <config>
     <modules>
        <BeGateway>
-         <version>1.2.9</version>
+         <version>1.3.0</version>
        </BeGateway>
     </modules>
 
