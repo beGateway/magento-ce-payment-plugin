@@ -1,0 +1,12 @@
+<config>
+  <modules>
+    <BeGateway>
+      <active>true</active>
+      <codePool>community</codePool>
+      <depends>
+        <Mage_Payment />
+      </depends>
+      <version>1.3.0</version>
+    </BeGateway>
+  </modules>
+</config>
