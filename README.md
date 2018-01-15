@@ -14,7 +14,7 @@ This is a Payment Module for Magento Community Edition, that gives you the abili
 
 ## Installation (manual)
 
-  * [Download the Payment Module archive](https://github.com/begateway/magento-ce-payment-plugin/archive/master.zip), unpack it and upload its contents to a new folder ```<root>/``` of your Magento installation
+  * [Download the Payment Module archive](https://github.com/begateway/magento-ce-payment-plugin/raw/master/magento-ce-payment-plugin.zip), unpack it and upload its contents to a new folder ```<root>/``` of your Magento installation
 
 
 ## Configuration
