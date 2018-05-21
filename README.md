@@ -40,20 +40,27 @@ Steps:
 
 ## Test data
 
-If you setup the module with default values, you can use the test data to make a test payment:
+You can use the following information to adjust the payment method in test mode:
 
   * Shop Id ```361```
   * Shop Secret Key ```b8647b68898b084b836474ed8d61ffe117c9a01168d867f24953b776ddcb134d```
   * Checkout Domain ```checkout.begateway.com```
   * Gateway Domain ```demo-gateway.begateway.com```
+  * Test mode `yes`
 
-### Test card details
+Use the following test card to make successful test payment:
 
-  * Card number ```4200000000000000```
-  * Card name ```John Doe```
-  * Card expiry date ```01/20``` to get a success payment
-  * Card expiry date ```10/20``` to get a failed payment
-  * CVC ```123```
+  * Card number: 4200000000000000
+  * Name on card: JOHN DOE
+  * Card expiry date: 01/30
+  * CVC: 123
+
+Use the following test card to make failed test payment:
+
+  * Card number: 4005550000000019
+  * Name on card: JOHN DOE
+  * Card expiry date: 01/30
+  * CVC: 123
 
 # Модуль оплаты BeGateway для Magento CE
 
@@ -100,10 +107,16 @@ If you setup the module with default values, you can use the test data to make a
   * Домен страницы оплаты ```checkout.begateway.com```
   * Домен платежного шлюза ```demo-gateway.begateway.com```
 
-### Тестовая карта
+Используйте следующие данные карты для успешного тестового платежа:
 
-  * Номер карты ```4200000000000000```
-  * Имя на карте ```John Doe```
-  * Срок действия для успешной оплаты ```01/20```
-  * Срок действия для неуспешной оплаты ```10/20```
-  * CVC ```123```
+  * Номер карты: 4200000000000000
+  * Имя на карте: JOHN DOE
+  * Месяц срока действия карты: 01/30
+  * CVC: 123
+
+Используйте следующие данные карты для неуспешного тестового платежа:
+
+  * Номер карты: 4005550000000019
+  * Имя на карте: JOHN DOE
+  * Месяц срока действия карты: 01/30
+  * CVC: 123

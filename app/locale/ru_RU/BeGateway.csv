@@ -26,3 +26,4 @@
 "Enable ERIP payments","Включить оплату через ЕРИП"
 "ERIP service number","Код услуги ЕРИП"
 "Direct API - allow customers to enter their CreditCard information on your website. Note: You need PCI-DSS certificate in order to enable this payment method.","Оплата на сайте магазина - разрешить покупателям вводить данные их банковских карт на сайте магазина. Примечание: у Вас должна быть сертификация по стандарту PCI DSS."
+"Test mode","Тестовый режим"

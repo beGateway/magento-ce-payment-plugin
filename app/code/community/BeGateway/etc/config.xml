@@ -19,7 +19,7 @@ GNU General Public License for more details.
 <config>
     <modules>
        <BeGateway>
-         <version>1.3.0</version>
+         <version>1.3.5</version>
        </BeGateway>
     </modules>
 
@@ -109,17 +109,25 @@ GNU General Public License for more details.
         <payment>
             <begateway_direct>
                 <model>begateway/direct</model>
+                <shop_id>361</shop_id>
+                <shop_pass>b8647b68898b084b836474ed8d61ffe117c9a01168d867f24953b776ddcb134d</shop_pass>
+                <domain_checkout>checkout.begateway.com</domain_checkout>
                 <order_status>pending</order_status>
                 <title>Credit Card (BeGateway Direct)</title>
                 <cctypes>VI,MC</cctypes>
                 <payment_action>payment</payment_action>
+                <test_mode>yes</test_mode>
                 <group>begateway</group>
             </begateway_direct>
             <begateway_checkout>
                 <model>begateway/checkout</model>
+                <shop_id>361</shop_id>
+                <shop_pass>b8647b68898b084b836474ed8d61ffe117c9a01168d867f24953b776ddcb134d</shop_pass>
+                <domain_gateway>demo-gateway.begateway.com</domain_gateway>
                 <title>Credit Card (BeGateway Checkout)</title>
                 <payment_action>payment</payment_action>
                 <order_status>pending</order_status>
+                <test_mode>yes</test_mode>
                 <group>begateway</group>
             </begateway_checkout>
         </payment>

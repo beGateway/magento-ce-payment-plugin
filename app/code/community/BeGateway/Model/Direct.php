@@ -229,8 +229,13 @@ class BeGateway_Model_Direct extends Mage_Payment_Model_Method_Cc
             $begateway->customer->setAddress($billing->getStreet(1));
             $begateway->customer->setCountry($billing->getCountry());
             $begateway->customer->setZip($billing->getPostcode());
+            $begateway->customer->setState($billing->getRegionCode());
             $begateway->setReturnUrl($this->getHelper()->getNotifyURL('direct'));
             $begateway->setNotificationUrl($this->getHelper()->getNotifyURL('direct'));
+
+            if ($helper->getConfigData($this->getCode(), 'test_mode')) {
+              $begateway->setTestMode(true);
+            }
 
             $response = $begateway->submit();
 

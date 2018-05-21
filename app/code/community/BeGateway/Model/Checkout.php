@@ -73,7 +73,7 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
               $tracking_id
             );
             $token->money->setCurrency($order->getOrderCurrencyCode());
-            $token->money->setAmount($order->getBaseGrandTotal());
+            $token->money->setAmount($order->getGrandTotal());
             $token->setDescription($helper->__('Order # %s payment', $order_id));
 
             $token->customer->setFirstName($billing->getFirstname());
@@ -84,6 +84,7 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             $token->customer->setZip($billing->getPostcode());
             $token->customer->setPhone($billing->getTelephone());
             $token->customer->setEmail($order->getCustomerEmail());
+            $token->customer->setState($billing->getRegionCode());
 
             $notification_url = $helper->getNotifyURL('checkout');
             $notification_url = str_replace('carts.local', 'webhook.begateway.com:8443', $notification_url);
@@ -118,6 +119,10 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
                 'service_info' => array($helper->__('Order %s payment', $order_id))
               ));
               $token->addPaymentMethod($erip);
+            }
+
+            if ($helper->getConfigData($this->getCode(), 'test_mode')) {
+              $token->setTestMode(true);
             }
 
             $response = $token->submit();

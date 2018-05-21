@@ -26,3 +26,4 @@
 "Enable ERIP payments","Enable ERIP payments"
 "ERIP service number","ERIP service number"
 "Direct API - allow customers to enter their CreditCard information on your website. Note: You need PCI-DSS certificate in order to enable this payment method."
+"Test mode","Test mode"
