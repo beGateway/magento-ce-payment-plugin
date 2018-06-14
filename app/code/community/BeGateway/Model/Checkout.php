@@ -359,7 +359,7 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
             $void = new \BeGateway\Void;
             $void->setParentUid($referenceId);
             $void->money->setCurrency($payment->getOrder()->getOrderCurrencyCode());
-            $void->money->setAmount($payment->getOrder()->getBaseGrandTotal());
+            $void->money->setAmount($payment->getOrder()->getGrandTotal());
 
             $response = $void->submit();
 
@@ -454,6 +454,17 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
                 return false;
             }
 
+            // verify that paid amount is correct
+            $money = new \BeGateway\Money;
+
+            $money->setCurrency($order->getOrderCurrencyCode());
+            $money->setAmount($order->getGrandTotal());
+            
+            if ($money->getCents() != $webhook->getResponse()->transaction->amount ||
+                $order->getOrderCurrencyCode() != $webhook->getResponse()->transaction->currency) {
+              return false;
+            }
+
             $payment = $order->getPayment();
 
             $transaction
@@ -502,27 +513,22 @@ class BeGateway_Model_Checkout extends Mage_Payment_Model_Method_Abstract
                 $payment->setIsTransactionClosed(true);
             }
 
-            $money = new \BeGateway\Money;
-            $money->setCents($webhook->getResponse()->transaction->amount);
-            $money->setCurrency($webhook->getResponse()->transaction->currency);
-
             // @codingStandardsIgnoreStart
             switch ($webhook->getResponse()->transaction->type) {
                 // @codingStandardsIgnoreEnd
                 case $helper::AUTHORIZE:
                     $payment->registerAuthorizationNotification(
-                        $money->getAmount()
+                        $order->getBaseGrandTotal()
                     );
                     break;
                 case $helper::PAYMENT:
                     $payment->registerCaptureNotification(
-                        $money->getAmount()
+                        $order->getBaseGrandTotal()
                     );
                     break;
                 default:
                     break;
             }
-
 
             $payment->save();
 
